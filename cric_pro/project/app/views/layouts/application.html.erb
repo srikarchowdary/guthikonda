@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+	<head>
+	 <title> Cricstudio </title>
+	 <%= stylesheet_link_tag "site" %>
+	</head>
+
+	<body>
+	 <div id="whole_page">
+	  <div id= "header">CRIC STUDIO</div>
+	  <div id= "nav">
+		<%= link_to "Home",:action => "index" %> |
+		<%= link_to "Images",:action => "images" %> | 
+		<%= link_to "Videos",:action => "vedios" %> |
+		<%= link_to "Rankings",:action => "rankings" %> |
+		<%= link_to "Livestreaming",:action => "livestreaming" %> |
+		<%= link_to "Products",:action => "products"%>|
+
+<% if user_signed_in? %>
+ <div>
+Signed in as... <%= current_user.email %> 
+<%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+</div>
+<% else %>
+<div>
+  <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+<% end %>
+</div>
+
+
+	
+	</div>
+	<div id= "content">
+	 <%= @content_for_layout %>
+         <%= yield %>
+	</div>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+	</div>
+
+</body>
+</html>

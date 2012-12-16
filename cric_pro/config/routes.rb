@@ -1,4 +1,6 @@
 Project2::Application.routes.draw do
+  get "tweet/user_page"
+
   devise_for :users
 
  
@@ -12,6 +14,9 @@ Project2::Application.routes.draw do
   get "site/contactus"
 
 root :to => 'site#index'
+
+match 'user_page' => 'tweet#user_page'
+match 'user_tweet' => 'tweet#user_tweet'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

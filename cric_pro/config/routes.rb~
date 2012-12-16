@@ -1,9 +1,9 @@
 Project2::Application.routes.draw do
+  get "tweet/user_page"
+
   devise_for :users
 
- do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-end
+ 
 
   get "site/index"
 

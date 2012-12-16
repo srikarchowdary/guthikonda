@@ -1,0 +1,31 @@
+require "rubygems"
+require "twitter"
+class TweetController < ApplicationController
+def user_page
+@tweet = Tweet.new
+end
+def user_tweet
+@tweet = Tweet.new(params[:tweet])
+
+if @tweet.save then
+# Certain methods require authentication. To get your Twitter OAuth credentials,
+# register an app at http://dev.twitter.com/apps
+Twitter.configure do |config|
+config.consumer_key = '4DgTGOH5w6957gRpKRxw'
+config.consumer_secret = '6QG1JcMwWeRmKpm7GJLHFe25yBwwPWaCEQiDZgZMhDk'
+config.oauth_token = '1016182597-gN3nhSfdMGwqLhmcdI3r8UnCSyHfb320fFHp2oY'
+config.oauth_token_secret = 'RwuwktUyPWtK7IG7p5lanw0nXrWUutuopG7PWAO9ju0'
+
+end
+
+# Initialize your Twitter client
+client = Twitter::Client.new
+
+# Post a status update
+client.update(@tweet.tweet_content)
+
+end
+render action: 'user_page', :notice => 'Twitter successfully posted'
+
+end
+end

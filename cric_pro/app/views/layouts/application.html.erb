@@ -15,14 +15,18 @@
 		<a href='/site/index'>Home</a> |
 		<a href='/site/images'>Images</a> |
  		<a href='/site/videos'>Videos</a> |
-		<a href='/site/contactus'>Contact Us</a> |	
-		</div>
-	<div id= "content">
+		<a href='/site/contactus'>Contact Us</a> |
+		<a href='/tweet/user_page'>Tweet Us</a> |	
+
 <% if user_signed_in? %>
   <div>Signed in as... <%= current_user.email %> (<%= button_to 'Logout', destroy_user_session_path, :method => :delete %>)</div>
 <% else %>
-  <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+  <%= link_to 'Register', new_user_registration_path %> | <%= link_to 'Sign in', new_user_session_path %>
 <% end %>
+		</div>
+
+	<div id= "content">
+
 
 <%= yield %>
        <p class="notice"><%= notice %></p>
